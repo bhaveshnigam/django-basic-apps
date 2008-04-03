@@ -2,11 +2,13 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import permalink
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
 from tagging.fields import TagField
 from basic.blog.managers import PostManager
 from django.utils.safestring import mark_safe
 from markup_utils.filters import markup_chain
 from django.core.cache import cache
+from threadedcomments.models import FreeThreadedComment
 
 import tagging
 
@@ -52,6 +54,8 @@ class Post(models.Model):
     categories      = models.ManyToManyField(Category, blank=True)
     tags            = TagField()
     objects         = PostManager()
+
+    comments = generic.GenericRelation(FreeThreadedComment)
 
     class Meta:
         verbose_name = _('post')
