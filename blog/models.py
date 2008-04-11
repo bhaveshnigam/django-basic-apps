@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import permalink
 from django.contrib.auth.models import User
 from tagging.fields import TagField
-from basic.blog.managers import PublicManager
+from basic.blog.managers import PostManager
 
 import tagging
 
@@ -48,7 +48,7 @@ class Post(models.Model):
     modified        = models.DateTimeField(_('modified'), auto_now=True)
     categories      = models.ManyToManyField(Category, blank=True)
     tags            = TagField()
-    objects         = PublicManager()
+    objects         = PostManager()
 
     class Meta:
         verbose_name = _('post')
@@ -67,12 +67,17 @@ class Post(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('blog_detail', None, {
-            'year': self.publish.year,
-            'month': self.publish.strftime('%b').lower(),
-            'day': self.publish.day,
-            'slug': self.slug
-        })
+        if self.status == 1:
+            return ('blog_preview', None, {
+                'slug'  : self.slug
+            })
+        else:
+            return ('blog_detail', None, {
+              'year'  : self.publish.year,
+              'month' : self.publish.strftime('%b').lower(),
+              'day'   : self.publish.day,
+              'slug'  : self.slug
+            })
     
     def get_previous_post(self):
         return self.get_previous_by_publish(status__gte=2)

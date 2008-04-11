@@ -65,6 +65,22 @@ def post_detail(request, slug, year, month, day):
 post_detail.__doc__ = date_based.object_detail.__doc__
 
 
+def post_detail_preview(request, slug):
+  """
+  Post detail preview
+
+  Templates: ``blog/post_detail.html``
+  Context:
+    object:
+      the object to be detailed
+  """
+  return list_detail.object_detail(
+    request,
+    slug = slug,
+    queryset = Post.objects.draft(),
+  )
+post_detail_preview.__doc__ = date_based.object_detail.__doc__
+
 def category_list(request):
     """
     Category list
