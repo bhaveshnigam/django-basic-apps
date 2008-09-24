@@ -1,41 +1,39 @@
 from django.conf.urls.defaults import *
-from basic.blog import views as blog_views
 
-
-urlpatterns = patterns('basic.blogs.views',
+urlpatterns = patterns('basic.blog.views',
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[-\w]+)/$',
-        view=blog_views.post_detail,
+        view='post_detail',
         name='blog_detail'),
 
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',
-        view=blog_views.post_archive_day,
+        view='post_archive_day',
         name='blog_archive_day'),
 
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$',
-        view=blog_views.post_archive_month,
+        view='post_archive_month',
         name='blog_archive_month'),
 
     url(r'^(?P<year>\d{4})/$',
-        view=blog_views.post_archive_year,
+        view='post_archive_year',
         name='blog_archive_year'),
 
     url(r'^categories/(?P<slug>[-\w]+)/$',
-        view=blog_views.category_detail,
+        view='category_detail',
         name='blog_category_detail'),
 
     url (r'^categories/$',
-        view=blog_views.category_list,
+        view='category_list',
         name='blog_category_list'),
 
     url (r'^search/$',
-        view=blog_views.search,
+        view='search',
         name='blog_search'),
 
     url(r'^page/(?P<page>\w)/$',
-        view=blog_views.post_list,
+        view='post_list',
         name='blog_index_paginated'),
 
     url(r'^$',
-        view=blog_views.post_list,
+        view='post_list',
         name='blog_index'),
 )
