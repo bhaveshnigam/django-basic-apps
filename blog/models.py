@@ -4,6 +4,9 @@ from django.db.models import permalink
 from django.contrib.auth.models import User
 from tagging.fields import TagField
 from basic.blog.managers import PostManager
+from django.utils.safestring import mark_safe
+from markup_utils.filters import markup_chain
+from django.core.cache import cache
 
 import tagging
 
@@ -84,3 +87,18 @@ class Post(models.Model):
     
     def get_next_post(self):
         return self.get_next_by_publish(status__gte=2)
+
+    def _get_body_html(self):
+        key = 'blog_post_%s' % str(self.pk)
+        html = cache.get(key)
+        if not html:
+            html = markup_chain(self.body)
+            cache.set(key, html, 60*60*24*30)
+        return mark_safe(html)
+    body_html = property(_get_body_html)
+
+    def save(self):
+        if self.id:
+          cache.delete('blog_post_%s' % str(self.pk))
+        super(Post, self).save()
+
