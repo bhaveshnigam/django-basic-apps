@@ -1,0 +1,79 @@
+# translation of django.po to greek
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Christos Trochalakis <yatiohi@ideopolis.gr>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-02 09:36+0300\n"
+"PO-Revision-Date: 2008-04-01 20:07+0300\n"
+"Last-Translator: Christos Trochalakis <yatiohi@ideopolis.gr>\n"
+"Language-Team: greek <django-gr@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:18 models.py:41
+msgid "title"
+msgstr "Τίτλος"
+
+#: models.py:19 models.py:42
+msgid "slug"
+msgstr "Ετικέτα"
+
+#: models.py:22
+msgid "category"
+msgstr "Κατηγορία"
+
+#: models.py:23
+msgid "categories"
+msgstr "Κατηγορίες"
+
+#: models.py:38
+msgid "Draft"
+msgstr ""
+
+#: models.py:39
+#, fuzzy
+msgid "Public"
+msgstr "δημοσιευμένο"
+
+#: models.py:44
+msgid "body"
+msgstr "Σώμα"
+
+#: models.py:45
+msgid "tease"
+msgstr "Απόσπασμα"
+
+#: models.py:46
+msgid "status"
+msgstr "Κατάσταση"
+
+#: models.py:47
+msgid "allow comments"
+msgstr "Ελεύθερα σχόλια"
+
+#: models.py:48
+msgid "publish"
+msgstr "δημοσιευμένο"
+
+#: models.py:49
+msgid "created"
+msgstr "δημιουργήθηκε"
+
+#: models.py:50
+msgid "modified"
+msgstr "τροποποιήθηκε"
+
+#: models.py:58
+msgid "post"
+msgstr "Δημοσίευση"
+
+#: models.py:59
+msgid "posts"
+msgstr "Δημοσιεύσεις "
