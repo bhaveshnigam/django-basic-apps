@@ -9,7 +9,7 @@ def find_files(directory, suffix_list):
                 if f.endswith(suffix):
                     yield os.path.join(relative_root, f)
 
-package_data = list(find_files('blog', ['.po', '.mo', '.html']))
+package_data = list(find_files('basic/blog', ['.po', '.mo', '.html']))
 
 kwargs = {
     'name' : 'basic',
